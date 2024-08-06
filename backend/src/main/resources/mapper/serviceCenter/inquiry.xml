@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ssafy.back.serviceCenter.inquiry.model.mapper.InquiryMapper">
+	<resultMap type="inquiryDto" id="Inquiry">
+		<result column="inquiry_no" property="inquiryNo"/>
+		<result column="writer_id" property="writerId"/>
+		<result column="title" property="title"/>
+		<result column="contents" property="contents"/>
+		<result column="type" property="type"/>
+		<result column="regist_date" property="registDate"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	
+	<!-- 문의사항 등록 -->
+	<insert id="insertInquiry" parameterType="inquiryDto">
+		insert into inquiry(writer_id, title, contents, type)
+		values(#{writerId}, #{title}, #{contents}, #{type})
+	</insert>
+	
+	<select id="selectInquiryCnt" resultType="int">
+		select count(inquiry_no) from inquiry where status != "해결"
+	</select>
+	
+	<select id="selectAllInquiry" resultMap="Inquiry">
+		select * from inquiry
+		order by status, regist_date desc
+	</select>
+	
+	<select id="selectInquiry" parameterType="int" resultMap = "Inquiry">
+		select * from inquiry
+		where inquiry_no = #{inquiryNo}
+	</select>
+	
+	<update id="updateInquiry" parameterType="int">
+		update inquiry set status '해결'
+	</update>
+</mapper>

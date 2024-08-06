@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.back.sale.model.mapper.SaleMapper">
+
+	<!-- 건물 목록 가져오기 -->
+	<select id="selectAptList" parameterType="string"
+		resultType="houseInfoDto">
+		SELECT aptCode, apartmentName
+		FROM houseinfo
+		WHERE apartmentName LIKE CONCAT('%', #{aptname}, '%')
+	</select>
+
+	<!-- 매물 등록 -->
+	<insert id="insertSale" parameterType="saleDto">
+		INSERT INTO saleinfo
+		(apt_id, seller_id, title, description, address, 
+		sale_type, price, maintenance_cost, build_type, 
+		build_year, area, floor, regist_date, image, imgurl)
+		VALUES 
+		(#{apt_id}, #{seller_id}, #{title}, #{description}, #{address}, 
+		#{sale_type}, #{price}, #{maintenance_cost}, #{build_type},
+		#{build_year}, #{area}, #{floor}, now(), #{image}, #{imgurl})
+		<selectKey resultType="int" keyProperty="sale_no" order="AFTER">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertOptions" parameterType="saleDto">
+		insert into optioninfo (sale_no, option_name)
+		values
+		<!-- collection에는 해당하는 Dto의 변수명을 적어준다 -->
+		<foreach collection="options" item="name" separator=" , ">
+			(#{sale_no}, #{name})
+		</foreach>
+	</insert>
+
+	<select id="selectSaleList" parameterType="long" resultType="saleDto">
+		SELECT *
+		FROM saleinfo
+		WHERE apt_id = #{aptCode}
+	</select>
+
+	<update id="updateSale" parameterType="saleDto">
+		UPDATE saleinfo
+		SET
+		description = #{description}, sale_type = #{sale_type},
+		price = #{price}, maintenance_cost = #{maintenance_cost},
+		build_type = #{build_type}, build_year = #{build_year},
+		area = #{area}, floor = #{floor}, image = #{image}
+		WHERE sale_no = #{sale_no}
+	</update>
+
+	<select id="selectSale" parameterType="int" resultType="saleDto">
+		SELECT *
+		FROM saleinfo
+		WHERE sale_no = #{sale_no}
+	</select>
+	
+	<select id="getOptions" parameterType="int" resultType="String">
+		SELECT option_name 
+		FROM optioninfo
+		WHERE sale_no = #{sale_no}
+		ORDER BY option_name
+	</select>
+
+	<delete id="deleteSale" parameterType="int">
+		DELETE
+		FROM saleinfo
+		WHERE
+		sale_no = #{sale_no}
+	</delete>
+	
+	<delete id="deleteOptions" parameterType="int">
+		DELETE
+		FROM optioninfo
+		WHERE
+		sale_no = #{sale_no}
+	</delete>
+
+</mapper>

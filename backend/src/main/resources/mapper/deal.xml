@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.back.deal.model.mapper.DealMapper">
+	
+	<select id="selectAptInfo" parameterType="String" resultType="houseInfoDto">
+		SELECT * 
+		FROM houseinfo
+		WHERE dongCode = #{dongCode}
+	</select>
+	
+	<select id="selectAptDeal" parameterType="String" resultType="houseDealDto">
+		SELECT *
+		FROM housedeal
+		WHERE aptCode = #{aptCode}
+	</select>
+	
+	<insert id="insertBookmark" parameterType="map">
+		INSERT INTO bookmark
+		VALUES (#{user_id}, #{aptCode})
+	</insert>
+	
+	<delete id="deleteBookmark" parameterType="map">
+		DELETE FROM bookmark
+		WHERE user_id = #{user_id} AND aptCode = #{aptCode}
+	</delete>
+	
+	<select id="selectBookmarks" parameterType="String" resultType="Long">
+		SELECT aptCode
+		FROM bookmark
+		WHERE user_id = #{user_id}
+	</select>
+
+	<select id="popularAptFromBookmark" resultType="long">
+		SELECT aptCode, count(*) `cnt` from bookmark
+		GROUP BY aptCode
+		ORDER BY `cnt` desc
+		LIMIT 5
+	</select>
+	
+	<select id="selectApt" parameterType="long" resultType="houseInfoDto">
+		SELECT *
+		FROM houseinfo
+		WHERE aptCode = #{aptCode}
+	</select>
+</mapper>

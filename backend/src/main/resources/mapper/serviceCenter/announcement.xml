@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ssafy.back.serviceCenter.announcement.model.mapper.AnnouncementMapper">
+	<resultMap type="announcementDto" id="announcement">
+		<result column="announcement_no" property="announcementNo" />
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<result column="hit" property="hit" />
+		<result column="regist_date" property="registDate" />
+	</resultMap>
+	
+	<resultMap type="announcementFileInfoDto" id="announcementFileInfo">
+		<result column="save_folder" property="saveFolder" />
+		<result column="original_name" property="originalName" />
+		<result column="save_name" property="saveName" />
+	</resultMap>
+	
+	<!-- 공지사항 리스트 -->
+	<sql id="search">
+		<if test="searchWord != null and searchWord != ''">
+			<choose>
+				<when test="searchFilter == 'announcementNo'">
+					announcement_no = #{searchWord}
+				</when>
+				<when test="searchFilter == 'title'">
+					title like CONCAT('%', #{searchWord}, '%')
+				</when>
+				<otherwise>
+					date_format(regist_date, '%Y-%m-%d') = #{searchWord}
+				</otherwise>
+			</choose>
+		</if>
+	</sql>
+	
+	<select id="selectAnnouncementList" parameterType="AnnouncementListParameterDto" resultMap="announcement">
+		select announcement_no, title, contents, hit, regist_date
+		from announcement
+		<where><include refid="search"></include></where>
+		order by announcement_no desc	
+		limit #{start}, #{sizePerPage}
+	</select>
+	
+	<select id="selectAnnouncementCnt" parameterType="AnnouncementListParameterDto" resultType="int">
+		select count(announcement_no)
+		from announcement
+		<where><include refid="search"></include></where>
+	</select>
+	
+	<select id="selectRecentAnnouncementList" parameterType="int" resultMap="announcement">
+		select announcement_no, title, regist_date
+		from announcement
+		where MONTH(regist_date) = #{month} or MONTH(regist_date) = #{month}+1
+		order by regist_date desc
+		limit 8
+	</select>
+	
+	<!-- 공지사항 view -->
+	<select id="selectAnnouncement" parameterType="int" resultMap="announcement">
+		select announcement_no, title, contents, hit, regist_date
+		from announcement
+		where announcement_no = #{announcementNo}
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update announcement
+		set hit = hit + 1
+		where announcement_no = #{announcementNo}
+	</update>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="insertAnnouncement" parameterType="announcementDto">
+		insert into announcement(title, contents)
+		values(#{title}, #{contents})
+	</insert>
+	
+	<insert id="insertFile" parameterType="announcementDto">
+		<selectKey order="BEFORE" keyProperty="announcementNo" resultType="int">
+			select announcement_no from announcement order by announcement_no desc limit 1
+		</selectKey>
+		insert into announcementfileinfo (announcement_no, save_folder, original_name, save_name)
+		values
+		<foreach collection="uploadFileList" item="uploadFile" separator=" , ">
+			(#{announcementNo}, #{uploadFile.saveFolder}, #{uploadFile.originalName}, #{uploadFile.saveName})
+		</foreach>
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateAnnouncement" parameterType="announcementDto">
+		update announcement
+		set title = #{title}, contents = #{contents}
+		where announcement_no = #{announcementNo}
+	</update>
+	
+	<delete id="deleteModifiedFile" parameterType="String">
+		delete from announcementfileinfo
+		where save_name = #{saveName}
+	</delete>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteAnnouncement" parameterType="int">
+		delete from announcement
+		where announcement_no = #{announcementNo}
+	</delete>
+	
+	<delete id="deleteAllFile" parameterType="int">
+		delete from announcementfileinfo
+		where announcement_no = #{announcementNo}
+	</delete>
+	
+	
+	
+	<select id="selectFileInfoList" parameterType="int" resultMap="announcementFileInfo">
+		select save_folder, original_name, save_name
+		from announcementfileinfo
+		where announcement_no = #{announcementNo}
+	</select>
+	
+</mapper>
