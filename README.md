@@ -7,6 +7,7 @@
 - [프로젝트 소개](#-프로젝트-소개)
 - [팀원 소개](#-팀원-소개)
 - [Role](#-role)
+- [Features](#-features)
 - [개발 일정](#-개발-일정)
 - [기술 스택](#-기술-스택)
 ---
@@ -25,7 +26,7 @@
 ## 💁 팀원 소개
 | <img alt="이지원" src="https://github.com/yesFlash.png" width="230" height="100%"/> | <img alt="이경배" src="https://github.com/rglley.png" width="230" height="100%" /> | <img alt="손의성" src="https://github.com/gabalja.png" width="230" height="100%"/> |
 |:---------------------------------------------------------:|:-----------------------------------------------------------------:|:-------------------------------------------------------------:|
-| [이지원](https://github.com/yesFlash) | [이경배](https://github.com/rglley) | [손의성](https://github.com/gabalja) |                            
+| 이지원 | 이경배 | 손의성 |                            
 
 ## 👨‍👩‍👧‍👦 Role
 **이지원**
@@ -42,8 +43,16 @@
 **손의성**
 - Front Leader
 - Vue 기반 전반적 화면 설계
-- 마이페이지 제작
+- DB 설계
 - 최종 발표
+
+---
+
+## 💡 Features
+
+
+
+
 
 ---
 
@@ -54,7 +63,7 @@
 
 ---
 
-## 기술 스택
+## 👩‍💻 기술 스택
 
 #### Front End
 ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
@@ -72,5 +81,9 @@
 #### Version Control
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+---
+
+
 
 
