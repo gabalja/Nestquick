@@ -50,9 +50,20 @@
 
 ## 💡 Features
 
+### 🏠 매물 검색
+| 클릭으로 정보 표시 | 매물 거래가 정보 |
+|:---:|:---:|
+| <img alt="검색" src="https://github.com/gabalja/Nestquick/blob/main/assets/property_search.gif" width="100%" height="100%" > | <img alt="거래가" src="https://github.com/gabalja/Nestquick/blob/main/assets/price_graph.gif" width="100%" height="100%" > |
 
+### 🗃️ 상권 탐색
+| 종류별 표시 | 상권 상세 정보 |
+|:---:|:---:|
+| <img alt="종류" src="https://github.com/gabalja/Nestquick/blob/main/assets/bookmark.gif" width="100%" height="100%" > | <img alt="상세" src="https://github.com/gabalja/Nestquick/blob/main/assets/bookmark_info.gif" width="100%" height="100%" > |
 
-
+### 🏢 아파트 상세 정보
+| 아파트 조회 화면 |
+|:---:|
+| <img alt="메인" src="https://github.com/gabalja/Nestquick/blob/main/assets/property_info.gif" width="100%" height="100%" > |   
 
 ---
 
