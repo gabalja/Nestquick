@@ -9,88 +9,65 @@
 - [Role](#-role)
 - [개발 일정](#-개발-일정)
 - [기술 스택](#-기술-스택)
-- [Front 구동 환경](#-front-구동-환경)
 - [주요 기능 및 역할](#-주요-기능-및-역할)
 - [폴더 구조 및 아키텍쳐 설계](#-폴더-구조-및-아키텍쳐-설계)
 ---
 
 ## 🍀 프로젝트 소개
-
 **부동산 매물 실시간 가격 조회 및 주변 분석을 통해 가장 적합한 매물을 찾아주는 서비스**
-
 #### 컨셉
 - Nestquick은 Nest(둥지) + quick(빠르다)의 합성어
 - 고객이 원하는 집을 빠르게 찾아준다는 의미 내포
-
 #### 강점
 - 빠르고 간단하게 사용자가 원하는 정보 제시
 - 간편한 매물 상세정보 조회
+  
 ## 💁 팀원 소개
-|[이지원]|[이경배]|[손의성]  |                            
+| <img alt="이지원" src="https://github.com/yesFlash.png" width="230" height="100%"/> | <img alt="이경배" src="https://github.com/rglley.png" width="230" height="100%" /> | <img alt="손의성" src="https://github.com/gabalja.png" width="230" height="100%"/> |
 |:---------------------------------------------------------:|:-----------------------------------------------------------------:|:-------------------------------------------------------------:|
-| <img alt="이담비" src="https://github.com/damdam6.png" width="230" height="100%"/> | <img alt="김세진" src="https://github.com/nijesmik.png" width="230" height="100%" /> | <img alt="gardener" src="https://github.com/Gardener-soul.png" width="230" height="100%"/> | <img alt="oree" src="https://github.com/dolmeengii.png" width="230" height="100%" /> |
-## 👨‍👩‍👧‍👦Role
-**이담비**
+| [이지원](https://github.com/yesFlash) | [이경배](https://github.com/rglley) | [손의성](https://github.com/gabalja) |                            
+
+## 👨‍👩‍👧‍👦 Role
+**이지원**
 - Team Leader
-- npm + vite 기반 프론트 환경 구축
-- 프론트 코딩 컨벤션 설정
-- 전체 Assets 제작 및 수정
-- 공통 컴포넌트 제작
-- 메인 페이지 제작
-- Phaser3를 활용한 게임 전체 구현
-- 코드 리뷰를 통한 피드백 제공
-- 중간/최종 발표 PPT 제작
-- UCC 감독
-- 최종 발표
-
-**김세진**
+- Kakao Map API를 활용한 지도 서비스
+- Chart.js를 사용한 거래가 그래프 제작
+  
+**이경배**
+- Back Leader
+- JWT를 사용한 회원관리 기능 구축
+- 고객 게시판 구현
+- Swagger 셋업
+  
+**손의성**
 - Front Leader
-- 피그마 디자인
-- 공통 axios api 제작
-- 공통 컴포넌트 제작
-- 전체 프레임 및 대기실 페이지 제작
-- axios 기반 백엔드 데이터 연결
-- User 상태 관리
-- 최종 발표 PPT 제작
-- 코드 리뷰를 통한 피드백 제공
-
-**전민정**
-- 서기
-- 피그마 디자인
-- 회의 내용 필기하여 노션에 기록
-- 공통 컴포넌트 제작
-- 랜딩, 랭킹 페이지 제작
-- 대기실 및 결과창 페이지 제작
-- 웹 소켓, Axios 기반 API 연결
-- 토큰을 기반으로 한 라우터 보안 관리
-- 코드 리뷰를 통한 피드백 제공
-- 최종 발표 UCC 촬영 및 제작
-
-**박은수**
-- 기획 및 정책 담당
-- 피그마 디자인
-- 요구사항 정의서 및 기능 명세서 작성
-- 세계관, 아이템, 수집 요소, 경험치에 대한 정책 수립
-- 공통 컴포넌트 제작
-- 회원 기능 , 게임 정보 , 환경설정, Collection 페이지 제작
-- Axios 기반 API 연결
-- Collection, Music 상태관리
-- 코드 리뷰를 통한 피드백 제공
-- UCC 출연
-- 중간 발표
-- ReadMe 파일 작성
-
------
-
-
+- Vue 기반 전반적 화면 설계
+- 마이페이지 제작
+- 최종 발표
 
 ## 📅 개발 일정
 <p align="center">
     <img alt="일정" src="https://github.com/gabalja/Nestquick/blob/main/assets/dev_schedule.png" width="100%" height="100%"/>
 </p>
 
+## 🛠️ 기술 스택
 
+#### Front End
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=AEDDFF)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 
+#### Back End
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
+
+#### Database
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+
+#### Version Control
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 # 타켓 후보 => 일단 특정 대상 없이 Common하게
 
