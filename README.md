@@ -10,6 +10,7 @@
 - [Features](#-features)
 - [개발 일정](#-개발-일정)
 - [기술 스택](#-기술-스택)
+- [ERD](#-erd)
 ---
 
 ## 🍀 프로젝트 소개
@@ -95,6 +96,10 @@
 
 ---
 
+## 💾 ERD
+<p align="center">
+    <img alt="erd" src="https://github.com/gabalja/Nestquick/blob/main/assets/nestquick_erd.png" width="70%" height="70%" >
+</p>
 
 
 
